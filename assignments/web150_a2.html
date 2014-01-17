@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Fortune Teller</title>
+	</head>
+	<body>
+		<script>
+			var fortune = confirm("Would you like your fortune read?");
+				if(fortune)
+				{
+					var color = prompt("What is your favorite color?");
+					color = color.toLowerCase();
+					if(color == "red")
+					{
+						console.log("This is  your fortune")
+					}
+					else if(color == "blue")
+					{
+						console.log("You should probably talk to someone about your depression")
+					}
+					else if(color == "green")
+					{
+						console.log("The Grass is always greener on the other side")
+					}
+					else if(color == "orange")
+					{
+						console.log("Orange you glad I didn't say banana")
+					}
+					else
+					{
+							console.log("You like a unique color, therefore you are getting this very specific unique fortune geared toward you specifically, except it actually doesn't say anything relevant...")
+					}
+					/*
+					switch (color)
+					{
+						case "red":
+							console.log(""This is  your fortune)
+						break;
+						
+						case "blue":
+							console.log("You should probably talk to someone about your depression")
+						break;
+						
+						case "green":
+							console.log("Grass is always greener on the other side")
+						break;
+						
+						case "orange":
+							console.log("Orange you glad I didn't say banana")
+						break;
+						
+						default
+							console.log("You like a unique color, therefore you are getting this very specific unique fortune geared toward you specifically, except it actually doesn't say anything relevant...")
+					}
+					*/
+				}
+				else
+				{
+					console.log("tough")
+					var number = prompt("Please pick a number between 1 and 10");
+					number = Number(number);
+					
+					if(number <= 2)
+					{
+						console.log("Hello Moto")
+					}
+					else if(number <= 4)
+					{
+						console.log("You will recieve a lump of coal for christmas")
+					}
+					else if(number <= 8)
+					{
+						console.log("My Sources Tell me SO")
+					}
+					else if(number <= 10)
+					{
+						console.log("Check back Later")
+					}
+					else if(number > 10)
+					{
+						console.log("number is too high")
+						number = prompt("You number must be less than 10");
+						
+						if(number <= 2)
+					{
+						console.log("No")
+					}
+					else if(number <= 4)
+					{
+						console.log("You have gone down the path to the darkside")
+					}
+					else if(number <= 8)
+					{
+						console.log("You are on your way to becoming a jedi")
+					}
+					else if(number <= 10)
+					{
+						console.log("You will live a long and prosperous life")
+					}
+					else if(number > 10)
+					{
+						console.log("you do not follow directions, you fortune has been erased");
+					}
+					}
+				}
+		</script>
+	</body>
+</html>
