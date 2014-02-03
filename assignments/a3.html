@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<title>Around the World</title>
+	<meta charset=utf8>
+</head>
+<body>
+
+<script src="http://thomaswilburn.net/sccc/data/expenditures.js"></script>
+<script>
+
+
+//highest expenditures
+var highExpend = { amount: 0};
+for ( var i = 0; i < expenditures.length; i++)
+{
+	var amounts = expenditures[i];
+	if(amounts.amount > highExpend.amount)
+	{
+		highExpend = amounts;
+	}
+}
+console.log("Country with the Highest Expenditure: " +highExpend.country, highExpend.amount);
+
+//lowest expenditures
+var lowExpend = { amount: Infinity};
+for ( var i = 0; i < expenditures.length; i++)
+{
+	var amountS = expenditures[i];
+	if(amountS.amount < lowExpend.amount)
+	{
+		lowExpend = amountS;
+	}
+}
+console.log("Country with the Lowest Expenditure: " +lowExpend.country, lowExpend.amount);
+
+//average expenditures
+var avExpend = 0;
+for (var i = 0; i < expenditures.length; i++)
+{
+	var average = expenditures[i];
+	avExpend += Number(average.amount);
+}
+
+var avCount = 0;
+for (var i = 0; i < expenditures.length; i++)
+{
+	if(expenditures[i].amount > 0)
+	{
+		avCount++;
+	}
+}
+console.log("The Average Expenditure: " + avExpend / avCount);
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
