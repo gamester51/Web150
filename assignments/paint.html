@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+	<title>paint shop</title>
+	<meta charset="utf8">
+	<style>
+		html
+		{
+			background-color : black;
+		}
+		canvas 
+		{
+			display : block;
+		}
+		.border
+		{
+			background-color : white;
+			border : 5px solid red;
+		}
+	</style>
+</head>
+<body>
+<div class="notAwrapper">
+
+	<button class="shape" data-shape="square">Square</button>
+	<button class="shape" data-shape="circle">Round</button>
+	<button class="shape" data-shape="spray">Spray</button>
+	
+	<button class="size" data-size="100000">Fill</button>
+	
+	<button class="size" data-size="10">Small</button>
+	<button class="size" data-size="30">Large</button>
+	
+	<button class="color" data-color="black">Black</button>
+	<button class="color" data-color="white">White</button>
+	<button class="color" data-color="red">Red</button>
+	<button class="color" data-color="orange">Orange</button>
+	<button class="color" data-color="yellow">Yellow</button>
+	<button class="color" data-color="green">Green</button>
+	<button class="color" data-color="blue">Blue</button>
+	<button class="color" data-color="purple">Purple</button>
+	
+<div class="border">
+
+	<canvas id="canvas" width=800 height=600></canvas>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+
+var $canvas = $(canvas);
+
+var brush = { 
+				active : false,
+				shape : "square",
+				size : 10,
+				color : "black",
+			};
+var drawRect = function (x, y, size)
+			{
+				context.fillRect(x - size / 2, y - size / 2, size, size);
+			};
+var drawCircle = function (x, y, size)
+			{
+				context.beginPath();
+				context.arc(x, y, size / 2, 0, 2 * Math.PI);
+				context.fill();
+			};
+var drawSpray = function (x, y, size)
+			{
+				context.beginPath();
+				context.arc(x, y, size / 2, 0, 2 * Math.PI);
+				context.fill();
+				context.beginPath();
+				context.arc(x +20, y +12, size / 2, 0, 2 * Math.PI);
+				context.fill();
+				context.arc(x +15, y +30, size / 5, 0, 2 * Math.PI);
+				context.fill();
+				context.arc(x +10, y +22, size / 3, 0, 2 * Math.PI);
+				context.fill();
+				context.beginPath();
+				context.arc(x -20, y -12, size / 2, 0, 2 * Math.PI);
+				context.fill();
+				context.arc(x -15, y -30, size / 1.5, 0, 2 * Math.PI);
+				context.fill();
+				context.arc(x -10, y -22, size / 6, 0, 2 * Math.PI);
+				context.fill();
+			};
+			
+			
+//basic mouseover interaction
+$canvas.on("mousemove", function(e)
+{
+	var offset = $canvas.offset();
+	var x = e.pageX - offset.left;
+	var y = e.pageY - offset.top;
+	if(brush.active)
+	{
+		context.fillStyle = brush.color;
+		if(brush.shape == "circle")
+		{
+			drawCircle(x, y, brush.size);
+		}
+		else if(brush.shape == "square")
+		{
+			drawRect(x, y, brush.size);
+		}
+		if(brush.shape == "spray")
+		{
+			drawSpray(x, y, brush.size);
+		}
+	}
+}
+);
+$canvas.on("mousedown mouseup", function(e)
+{
+	brush.active = e.type == "mousedown";
+}
+);
+
+var shapes = $(".shape");
+shapes.on("click", function(e)
+			{
+				var $this = $(this);
+				var shape = $this.attr("data-shape");
+				brush.shape = shape;
+			}
+		);
+		
+var sizes = $(".size");
+sizes.on("click", function()
+			{
+				var $this = $(this);
+				var size = $this.attr("data-size");
+				brush.size = size;
+			}
+		);
+		
+var colors = $(".color");
+colors.on("click", function()
+			{
+				var $this = $(this);
+				var color = $this.attr("data-color");
+				brush.color = color;
+			}
+		);
+
+</script>
+</div>
+</div>
+</body>
+</html>
