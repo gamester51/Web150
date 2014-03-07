@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <title>8 Ball</title>
+    <meta charset="utf8">
+  </head>
+  <body>
+	<div class="answer"></div>
+	White space
+    <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script>
+	var request = $.ajax
+	(
+		{
+			url: "http://thomaswilburn.net:8080/magic8",
+			dataType: "jsonp",
+			jsonp: "eightballfortune",
+			data:
+			{
+				format: "json"
+			}
+		}
+	);
+	request.done(function(data)
+		{
+			//$(".results").empty();
+			var answer = data;
+			console.log(answer);
+			var ans = $("answer");
+			$(".answer").append(ans);
+		}
+	);
+  
+    </script>
+  </body>
+</html>
