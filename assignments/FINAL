@@ -221,7 +221,7 @@ header.click(function()
 // result. 
 
 
-//var rps = function() {};
+var rps = function() {};
 
 //I didn't like your function, so I did it my way. I'm sure it is inefficient, but it works. 
 //It returns a "0" if it is a tie, a "1" if you(player one) 
